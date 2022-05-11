@@ -1,0 +1,282 @@
+body {
+  margin: 0;
+  background-color: #F3F3F3;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+
+.btn {
+  font-size: inherit;
+  background-color: hsl(30, 100%, 30%);
+  padding: .5em 1em;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: .2em;
+  color: #333;
+}
+
+.btn:hover, .btn:focus {
+  background-color: hsl(30, 100%, 30%);
+}
+
+.splash-btn {
+  font-size: 2rem;
+  margin-left: 2rem;
+}
+
+.splash-btn:first-child {
+  margin-left: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.battleship-grid {
+  margin: 1vmin;
+  display: grid;
+  background-color: hsl(200, 100%, 20%);
+  grid-template-rows: repeat(12, 2.3vmin);
+  grid-template-columns: repeat(12, 2.3vmin);
+}
+
+.grid-computer > .taken,
+.grid-computer > .boom {
+  background-color: hsl(200, 100%, 20%) !important;
+  border-radius: 0 !important;
+}
+
+.taken,
+.ship {
+  position: relative;
+  background-color: hsl(0, 0%, 80%);
+}
+
+.taken.start.vertical,
+.taken.start.vertical::before {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+.taken.end.vertical,
+.taken.end.vertical::before {
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.taken.start.horizontal,
+.taken.start.horizontal::before {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.taken.end.horizontal,
+.taken.end.horizontal::before {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.taken.vertical::before,
+.taken.horizontal::before {
+  content: '';
+  position: absolute;
+  border: .15vmin solid white;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+}
+
+.taken.horizontal::before {
+  animation: ripplesY 3s linear infinite;
+  border-left: none;
+  border-right: none;
+}
+
+.taken.vertical::before {
+  animation: ripplesX 3s linear infinite;
+  border-top: none;
+  border-bottom: none;
+}
+
+@keyframes ripplesX {
+  0% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleX(1.5);
+  }
+}
+
+@keyframes ripplesY {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(1.5);
+  }
+}
+
+.grid-display {
+  display: flex;
+}
+
+.ship > div {
+  width: 2.3vmin;
+  height: 2.3vmin;
+}
+
+.ship {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5vmin;
+  width: calc(2.3vmin * var(--width, 1));
+  height: calc(2.3vmin * var(--height, 1));
+  border-radius: 1vmin;
+}
+
+.battleship-grid div {
+  border: 1px solid rgba(255, 255, 255, 0.073);
+}
+
+.L1_1-container
+.L1_2-container
+.L1_3-container
+.L1_4-container {
+ --width: 1;
+}
+
+.L2_1-container
+.L2_2-container
+.L2_3-container {
+  --width: 2;
+}
+
+.L2_1-container-vertical
+.L2_2-container-vertical
+.L2_3-container-vertical {
+  --height: 2;
+  --width: 1;
+}
+
+.L3_1-container,
+.L3_2-container {
+  --width: 3;
+}
+
+.L3_1-container-vertical,
+.L3_2-container-vertical {
+  --height: 3;
+  --width: 1;
+}
+
+.L4_1-container {
+  --width: 4;
+}
+
+.L4_1-container-vertical {
+  --height: 4;
+  --width: 1;
+}
+
+
+.hidden-info {
+  font-size: 1.5rem;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info-text {
+  margin: 1rem;
+}
+
+.miss,
+.boom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boom::after,
+.miss::after {
+  content: '';
+  position: absolute;
+  border-radius: 100%;
+  width: 1vmin;
+  height: 1vmin;
+}
+
+.miss::after {
+  background-color: white;
+}
+
+.boom::after {
+  background-color: red;
+}
+
+.miss::before {
+  content: '';
+  position: absolute;  
+  border: 0.5vmin solid white;
+  animation: hit .2s ease-out forwards;
+  border-radius: 100%;
+  width: 1vmin;
+  height: 1vmin;
+}
+
+.boom {
+  animation: boom .2s ease-out forwards;
+}
+
+@keyframes hit {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(4);
+  }
+}
+
+@keyframes boom {
+  0% {
+    background-color: red;
+  }
+
+  100% {
+    background-color: hsl(0, 0%, 80%);
+  }
+}
+
+.player {
+  margin: 1vmin;
+}
+
+.connected, .ready {
+  font-weight: normal;
+  opacity: .25;
+  text-decoration: line-through;
+}
+
+.connected.active,
+.ready.active {
+  opacity: 1;
+  text-decoration: none;
+}

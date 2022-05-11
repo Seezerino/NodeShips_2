@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>NodeShips</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="mp_app.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <div class="w3-container w3-black w3-animate-top	">
+      <h1>Schiffe versenken</h1>
+      <h3>von Patrick, Jonny und Daniel</h3>
+    </div>
+
+    <div class="container hidden-info">
+      <h3 id="whose-go" class="info-text"></h3>
+
+      <div class="setup-buttons" id="setup-buttons">
+        <button id="start" class="btn w3-black">Start</button>
+        <button id="rotate" class="btn w3-black w3-hover-blue"><i class="material-icons">refresh</i></button>
+      </div>
+      
+      
+
+    </div>
+
+
+    <div class="container">
+      <div class="battleship-grid grid-user"></div>
+      <div class="battleship-grid grid-computer"></div>
+    </div>
+
+   
+
+    <div class="container">
+      <div class="grid-display">
+        <div class="ship L4_1-container" draggable="true">
+          <div id="L4_1-0"></div><div id="L4_1-1"></div><div id="L4_1-2"></div><div id="L4_1-3"></div>
+        </div>
+
+        <div class="ship L3_1-container" draggable="true">
+          <div id="L3_1-0"></div><div id="L3_1-1"></div><div id="L3_1-2"></div>
+        </div>
+        <div class="ship L3_2-container" draggable="true">
+          <div id="L3_2-0"></div><div id="L3_2-1"></div><div id="L3_2-2"></div>
+        </div>
+
+        <div class="ship L2_1-container" draggable="true">
+          <div id="L2_1-0"></div><div id="L2_1-1"></div>
+        </div>
+        <div class="ship L2_2-container" draggable="true">
+          <div id="L2_2-0"></div><div id="L2_2-1"></div>
+        </div>
+        <div class="ship L2_3-container" draggable="true">
+          <div id="L2_3-0"></div><div id="L2_3-1"></div>
+        </div>
+
+        <div class="ship L1_1-container" draggable="true">
+          <div id="L1_1-0"></div>
+        </div>
+        <div class="ship L1_2-container" draggable="true">
+          <div id="L1_2-0"></div>
+        </div>
+        <div class="ship L1_3-container" draggable="true">
+          <div id="L1_3-0"></div>
+        </div>
+        <div class="ship L1_4-container" draggable="true">
+          <div id="L1_4-0"></div>
+        </div>
+
+      </div>
+
+    </div>
+    <h5  class="w3-text-black w3-round w3-center" >Current Status: </h5>
+        <div id="gamestatus" class="w3-text-black w3-round w3-center w3-border-bottom w3-border-top	 " >  </div>
+  </body>
+</html>
